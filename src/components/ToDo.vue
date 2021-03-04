@@ -1,25 +1,22 @@
 <template>
-    <div v-for='todo in todos' :key="todo.id">
-        <div v-if='todo.completed === false' class='todo-card'>
-            <h3>{{ todo.content }}</h3>
-        </div>
-        <div v-else class='disabled'>
-            <h3>{{ todo.content }}</h3>
-        </div>
+    <div v-if="todo.completed === false" class='todo-card'>
+        <h3>{{ todo.content }}</h3>
+        <button>Mark as Complete</button>
+    </div>
+    <div v-else-if="todo.completed === true" class='disabled'>
+        <h3>{{ todo.content }}</h3>
     </div>
 </template>
 
 <script>
 export default {
     name: 'Todo',
-    props: ['todos']
+    props: ['todo'],
 }
 </script>
 
 <style scoped>
     .todo-card{
-        /* display: flex; */
-        /* flex-flow: column-wrap; */
         margin-top: 1em;
         margin-bottom: 1em;
         border: black;

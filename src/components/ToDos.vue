@@ -1,7 +1,8 @@
 <template>
     <div>
-        <h1>My Todos</h1>
-        <ToDo :todos="todos"/>
+        <div v-for='todo in todos' :key="todo.id">
+            <ToDo :todo="todo"/>
+        </div>
     </div>
 </template>
 
