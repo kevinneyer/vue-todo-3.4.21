@@ -2,10 +2,10 @@
   <div>
     <div>
       <h1>My Todos</h1>
-      <button @click='formHandler()'>{{ form ? 'Hide Form' : 'Create Todo' }}</button>
+      <button @click='formHandler'>{{ form ? 'Hide Form' : 'Create Todo' }}</button>
     </div>
     <div v-if='form'>
-      <CreateForm />
+      <CreateForm @submit-handler='addHandler'/>
     </div>
     <ToDos :todos="todos" />
   </div>
@@ -35,12 +35,27 @@ export default {
     },
     formHandler(){
       this.form = !this.form
+    },
+    addHandler(todo){
+    //   fetch('http://localhost:3000/todos', {
+    //     method: 'POST',
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //       'Accepts': 'application/json'
+    //     },
+    //     body: JSON.stringify(todo)
+    //   })
+    //   .then(res => res.json())
+    //   .then(data => {
+    //     // this.todos = [...this.todos, data]
+    //     console.log(data)
+    //   })
+    // }
+    console.log(todo)
     }
   },
   async mounted(){
     this.todos = await this.getTodos()
-  
   }
-  
 }
 </script>

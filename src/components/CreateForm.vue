@@ -1,8 +1,9 @@
 <template>
     <div>
-        <form class='form'>
+        <form v-on:submit.prevent='submitHandler' class='form'>
             <label>Enter Todo</label><br />
-            <textarea v-model="content" type='text' placeholder="Enter todo...."/><br />
+            <input v-model="content" type='text' name='content' placeholder="Enter todo...."/><br />
+            <input type='hidden' />
             <input type='submit' />
         </form>
     </div>
@@ -15,6 +16,14 @@ export default {
         return{
             content: ''
         }
+    },
+    methods: {
+        submitHandler(){
+            let newToDo = {
+                content: this.content,
+                completed: false
+            }
+            this.$emit('submit-handler', newToDo)        }
     }
 }
 </script>

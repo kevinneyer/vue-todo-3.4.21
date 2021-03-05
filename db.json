@@ -1,24 +1,24 @@
 {
-    "todos": [
-        {
-            "id": 1,
-            "content": "Wash the Dishes",
-            "completed": false
-        },
-        {
-            "id": 2,
-            "content": "Take out trash",
-            "completed": false
-        },
-        {
-            "id": 3,
-            "content": "Pay phone bill",
-            "completed": false
-        },
-        {
-            "id": 4,
-            "content": "Email John",
-            "completed": false
-        }
-    ]
+  "todos": [
+    {
+      "id": 1,
+      "content": "Wash the Dishes",
+      "completed": false
+    },
+    {
+      "id": 2,
+      "content": "Take out trash",
+      "completed": false
+    },
+    {
+      "id": 3,
+      "content": "Pay phone bill",
+      "completed": false
+    },
+    {
+      "id": 4,
+      "content": "Email John",
+      "completed": false
+    }
+  ]
 }
