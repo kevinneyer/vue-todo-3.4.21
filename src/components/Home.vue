@@ -54,25 +54,13 @@ export default {
       })
     },
     completeHandler(id){ // does not persist
-        let todo = this.todos.filter( todo => todo.id === id)
-        fetch(`http://localhost:3000/todos/${id}`, {
-         method: 'PUT',
-         headers: {
-           'Content-Type': 'application/json',
-           'Accepts': 'application/json'
-         },
-         body: JSON.stringify({ ...todo, completed: !todo.completed})
-       })
-       .then(res => res.json())
-       .then(data => 
-       console.log(data)
-          // this.todos = this.todos.map( todo => {
-          //   if(todo.id === id){
-          //     return { ...todo, completed: data.completed}
-          //   } else
-          //   return todo 
-          // })
-       )
+        let newTodos = this.todos.map( todo => {
+          if(todo.id === id){
+            return { ...todo, completed: !todo.completed}
+          } else
+          return todo 
+        })
+         this.todos = newTodos
     },
     deleteHandler(id){
        fetch(`http://localhost:3000/todos/${id}`, {
