@@ -1,10 +1,9 @@
 <template>
-    <div>
+    <div class='form-container'>
         <form v-on:submit.prevent='submitHandler' class='form'>
-            <label>Enter Todo</label><br />
-            <input v-model="content" type='text' name='content' placeholder="Enter todo...."/><br />
+            <input class='text' v-model="content" type='text' name='content' placeholder="Enter todo...."/><br />
             <input type='hidden' />
-            <input type='submit' />
+            <input class='button' type='submit' />
         </form>
     </div>
 </template>
@@ -33,6 +32,35 @@ export default {
 
 <style scoped>
     .form{
+        margin-top: .25em;
+        margin-bottom: .25em;
         display: block;
+    }
+    .form-container{
+        /* border-style: dashed;
+        border-color: black; */
+        width: 25%;
+        margin-right: auto;
+        margin-left: auto;
+    }
+    .text{
+        width: 75%;
+        height: 40px;
+        margin-right: auto;
+        margin-left: auto;
+        margin-top: 1em;
+        margin-bottom: 1em;
+    }
+
+    .button{
+        background-color: black;
+        color: white;
+        /* margin-top: .25em; */
+        margin-bottom: .25em;
+          padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
     }
 </style>

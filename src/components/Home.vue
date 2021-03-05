@@ -2,7 +2,7 @@
   <div>
     <div>
       <h1>My Todos</h1>
-      <button @click='formHandler'>{{ form ? 'Hide Form' : 'Create Todo' }}</button>
+      <button class= 'button' @click='formHandler'>{{ form ? 'Hide Form' : 'Create Todo' }}</button>
     </div>
     <div v-if='form'>
       <CreateForm @submit-handler='addHandler'/>
@@ -95,3 +95,15 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  .button{
+    background-color: grey;
+    color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+</style>
