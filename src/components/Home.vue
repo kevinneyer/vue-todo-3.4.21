@@ -31,10 +31,12 @@ export default {
     }
   },
   methods: {
-    async getTodos(){
-      let results = await fetch('http://localhost:3000/todos')
-      let data = await results.json()
-      return data
+    getTodos(){
+      fetch('http://localhost:3000/todos')
+      .then(res => res.json())
+      .then(data => {
+        this.todos = data
+      })
     },
     formHandler(){
       this.form = !this.form
@@ -54,28 +56,42 @@ export default {
       })
     },
     completeHandler(id){ // does not persist
+      let toChange = this.todos.find(todo => todo.id === id)
+      fetch(`http://localhost:3000/todos/${id}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accepts': 'application/json'
+        },
+        body: JSON.stringify({
+          ...toChange,completed: !toChange.completed
+        })
+      })
+      .then(res => res.json())
+      .then(data => {
         let newTodos = this.todos.map( todo => {
           if(todo.id === id){
-            return { ...todo, completed: !todo.completed}
+            return { ...todo, completed: data.completed}
           } else
           return todo 
         })
-         this.todos = newTodos
+        this.todos = newTodos
+      })
     },
     deleteHandler(id){
-       fetch(`http://localhost:3000/todos/${id}`, {
-         method: 'DELETE',
-         headers: {
-           'Content-Type': 'application/json'
-         }
-       })
-       .then(() => {
-          this.todos = this.todos.filter( todo => todo.id !== id)
-       })
+      fetch(`http://localhost:3000/todos/${id}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      .then(() => {
+        this.todos = this.todos.filter( todo => todo.id !== id)
+      })
     }
   },
-  async mounted(){
-    this.todos = await this.getTodos()
+   mounted(){
+    this.getTodos()
   }
 }
 </script>

@@ -6,10 +6,10 @@
       "completed": false
     },
     {
-        "id": 3,
-        "content": "Pay phone bill",
-        "completed": false
-      },
+      "id": 3,
+      "content": "Pay phone bill",
+      "completed": false
+    },
     {
       "id": 4,
       "content": "Email John",
