@@ -1,7 +1,10 @@
 <template>
     <div>
         <div v-for='todo in todos' :key="todo.id">
-            <ToDo :todo="todo"/>
+            <ToDo 
+            @complete-handler="$emit('complete-handler', todo.id)" 
+            @delete-handler="$emit('delete-handler', todo.id)"
+            :todo="todo"/>
         </div>
     </div>
 </template>

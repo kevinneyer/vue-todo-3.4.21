@@ -23,7 +23,10 @@ export default {
                 content: this.content,
                 completed: false
             }
-            this.$emit('submit-handler', newToDo)        }
+            this.content = ''
+            
+            this.$emit('submit-handler', newToDo)      
+        }
     }
 }
 </script>

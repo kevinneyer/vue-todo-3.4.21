@@ -1,11 +1,6 @@
 {
   "todos": [
     {
-      "id": 1,
-      "content": "Wash the Dishes",
-      "completed": false
-    },
-    {
       "id": 2,
       "content": "Take out trash",
       "completed": false
