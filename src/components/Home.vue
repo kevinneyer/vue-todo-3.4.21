@@ -2,6 +2,10 @@
   <div>
     <div>
       <h1>My Todos</h1>
+      <!-- <button @click='makeDate'>Date</button> -->
+      <div v-if="date">
+        {{ date }}
+      </div>
       <button class= 'button' @click='formHandler'>{{ form ? 'Hide Form' : 'Create Todo' }}</button>
     </div>
     <div v-if='form'>
@@ -17,6 +21,7 @@
 <script>
 import ToDos from './ToDos'
 import CreateForm from './CreateForm'
+import moment from "moment";
 
 export default {
   name: 'Home',
@@ -27,7 +32,8 @@ export default {
   data: function (){
     return {
       todos: [],
-      form: false
+      form: false,
+      date: ''
     }
   },
   methods: {
@@ -88,10 +94,16 @@ export default {
       .then(() => {
         this.todos = this.todos.filter( todo => todo.id !== id)
       })
+    },
+    makeDate(){
+      let date = new Date('2021/04/02')
+      this.date = moment(date).format("MMM 'YY").toUpperCase()
+      // return this.date
     }
   },
    mounted(){
     this.getTodos()
+    this.makeDate()
   }
 }
 </script>
